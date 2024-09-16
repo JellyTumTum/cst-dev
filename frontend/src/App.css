@@ -1,0 +1,101 @@
+html, body, #root {
+    height: 100%;
+  }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Default Theme (Light) */
+:root {
+    --text-main-color: #000000;
+    --text-secondary-color: #555555;
+    --border-color: #cccccc;
+    --top-bar-bg-color: #f1f1f1;
+    --top-bar-hover-color: #dddddd;
+    --top-bar-search-box-color: #e1e1e1;
+    --side-bar-main-color: #e6e6e6;
+    --explorer-main-color: #f5f5f5;
+    --explorer-selected-color: #e0e0e0;
+    --main-bg-color: #ffffff;
+    --main-indent-color: #f0f0f0;
+    --selected-accent-color: #005FB8;
+    --bottom-bar-bg-color: #007ACC;
+    --icon-bar-bg-color: #F8F8F8;
+  }
+  
+  /* Dark Theme (Dark+) */
+  .theme-dark {
+    --text-main-color: #C2C4C4;
+    --text-secondary-color: #8C8C8C;
+    --border-color: #616161;
+    --top-bar-bg-color: #3C3C3C;
+    --top-bar-hover-color: #454646;
+    --top-bar-search-box-color: #464646;
+    --side-bar-main-color: #333333;
+    --explorer-main-color: #252526;
+    --explorer-selected-color: #37373D;
+    --explorer-hover-color: #454646;
+    --main-bg-color: #1E1E1E;
+    --main-indent-color: #404040;
+    --selected-accent-color: #FFFFFF;
+    --bottom-bar-bg-color: #007ACC;
+    --icon-bar-bg-color: #333333;
+  }
+
+  .theme-dark-modern {
+    --text-main-color: #C2C4C4;
+    --text-secondary-color: #8C8C8C;
+    --border-color: #2B2B2B;
+    --top-bar-bg-color: #181818;
+    --top-bar-hover-color: #454646;
+    --top-bar-search-box-color: #1F1F1F;
+    --side-bar-main-color: #181818;
+    --explorer-main-color: #181818;
+    --explorer-selected-color: #37373D;
+    --explorer-hover-color: #2A2D2E;
+    --main-bg-color: #1F1F1F;
+    --main-indent-color: #404040;
+    --selected-accent-color: #007ACC;
+    --bottom-bar-bg-color: #181818;
+    --icon-bar-bg-color: #181818;
+    --tab-bg-color: #181818;
+    --tab-hover-color: #1F1F1F;
+  }
+  
+  /* Solarized Dark Theme */
+  .theme-solarized-dark {
+    --text-main-color: #C2C4C4;
+    --text-secondary-color: #8C8C8C;
+    --border-color: #198587;
+    --top-bar-bg-color: #002C39;
+    --top-bar-hover-color: #1C3B44;
+    --top-bar-search-box-color: #1C3B44;
+    --side-bar-main-color: #003847;
+    --explorer-main-color: #333333;
+    --explorer-selected-color: #005A6F;
+    --explorer-hover-color: #1C3B44;
+    --main-bg-color: #002B36;
+    --main-indent-color: #002B36;
+    --selected-accent-color: #FFFFFF;
+    --bottom-bar-bg-color: #00212B;
+    --icon-bar-bg-color: #003847;
+  }
+  
