@@ -28,6 +28,37 @@ function App() {
         });
     };
 
+    const onTabClose = (tabName) => {
+        setOpenTabs((prevTabs) => {
+            console.log("Skibidi Rizz")
+            const updatedTabs = prevTabs.filter((tab) => tab !== tabName); // Remove the closed tab
+            console.log(updatedTabs)
+    
+            // If the closed tab is not the selected tab, no need to change selectedTab
+            if (selectedTab !== tabName) {
+                return updatedTabs;
+            }
+    
+            // Find the index of the closed tab
+            const tabIndex = prevTabs.indexOf(tabName);
+    
+            // Set the new selectedTab:
+            // 1. If there is a previous tab, select it
+            // 2. If no previous tab but there is a next tab, select it
+            // 3. If no tabs left, set selectedTab to null
+            if (updatedTabs.length === 0) {
+                setSelectedTab(null);
+            } else if (tabIndex > 0) {
+                setSelectedTab(updatedTabs[tabIndex - 1]); // Select the previous tab
+            } else {
+                setSelectedTab(updatedTabs[-1]); // Select the next available tab
+            }
+
+            return updatedTabs;
+        });
+    };
+    
+
     // Switch theme and save it in localStorage
     // const switchTheme = () => {
     //     COMPLETE (need newTheme from the buttons whenever they are made)
@@ -48,7 +79,7 @@ function App() {
                 </div>
 
                 <div className="flex-grow bg-mainBackground overflow-auto">
-                    <MainWindow onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></MainWindow>
+                    <MainWindow onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs} onTabClose={onTabClose}></MainWindow>
                 </div>
             </div>
 

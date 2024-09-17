@@ -5,6 +5,7 @@ import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import ToggleableFolder from "./ToggleableFolder";
 import FileName from "./FileName";
 
+
 const Explorer = ({onTabClick, selectedTab, openTabs}) => {
 
 

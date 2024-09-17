@@ -78,6 +78,7 @@ html, body, #root {
     --icon-bar-bg-color: #181818;
     --tab-bg-color: #181818;
     --tab-hover-color: #1F1F1F;
+    --tab-close-hover-color: #313232;
   }
   
   /* Solarized Dark Theme */

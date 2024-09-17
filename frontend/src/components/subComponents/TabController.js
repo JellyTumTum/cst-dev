@@ -1,19 +1,22 @@
 import React from 'react';
 import Tab from './Tab';
 
-const TabController = ({ tabNames, selectedTab, onTabClick }) => {
+const TabController = ({ openTabs, selectedTab, onTabClick, onTabClose }) => {
+
+    // console.log(tabNames)
+
     return (
         <div
             className="h-full w-full flex flex-row overflow-x-auto 
             border-borderColor bg-tabBackground"
             style={{ whiteSpace: 'nowrap' }} // Prevents wrapping of tabs
         >
-            {tabNames &&
-                tabNames.map((name, index) => {
-                    const position = index === 0 ? 'first' : index === tabNames.length - 1 ? 'last' : 'middle';
+            {openTabs &&
+                openTabs.map((name, index) => {
+                    const position = index === 0 ? 'first' : index === openTabs.length - 1 ? 'last' : 'middle';
                     return (
                         <div key={name} onClick={() => onTabClick(name)}>
-                            <Tab name={name} selected={name === selectedTab} position={position} />
+                            <Tab name={name} selected={name === selectedTab} position={position} onTabClose={onTabClose} selectedTab={selectedTab} openTabs={openTabs} />
                         </div>
                     );
                 })
