@@ -8,7 +8,6 @@ import FileName from "./FileName";
 
 const Explorer = ({onTabClick, selectedTab, openTabs}) => {
 
-
     return (
         <div className="pt-4 h-full w-full bg-explorerMain 
         border-r-[1px] border-borderColor">
@@ -24,7 +23,7 @@ const Explorer = ({onTabClick, selectedTab, openTabs}) => {
             </div>
             <div className="">
                 <ToggleableFolder name="cst-dev" indentLevel={0} topLevel={true}>
-                    <FileName name="welcome" indentLevel={1} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
+                    <FileName name="welcome.js" indentLevel={1} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
                     <ToggleableFolder name="projects" indentLevel={1}>
                         <FileName name="lyriclabs" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
                         <FileName name="project SAM" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>

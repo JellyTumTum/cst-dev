@@ -1,10 +1,14 @@
 import React from "react";
 import { Typography } from '@material-tailwind/react';
 import { DocumentIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import FileIcon from "./FileIcon";
+import { stripFileExtension } from "../../utils/iconUtils";
 
 const Tab = ({ name, selected, position, onTabClose, selectedTab, openTabs }) => {
     const isFirst = position === 'first';
     const isLast = position === 'last';
+
+
 
     return (
         <div
@@ -14,11 +18,11 @@ const Tab = ({ name, selected, position, onTabClose, selectedTab, openTabs }) =>
                 ${selected ? 'border-t-[2px] border-t-selectedAccent bg-tabHover border-b-0' : 'border-b-[1px] border-b-borderColor'} 
                 bg-tabBackground hover:bg-tabHover`}
         >
-            <DocumentIcon className="h-5 w-5 mx-2 text-textMain" />
+            <FileIcon fileName={name} className="h-5 w-5 mx-2" />
             <Typography className={`text-md 
                 ${selected ? 'text-textMain' : 'text-textSecondary'} 
                 mr-2`}>
-                {name}
+                {stripFileExtension(name)}
             </Typography>
             <div className={`h-6 w-6 rounded-md flex items-center justify-center hover:bg-tabCloseHover`}
                 onClick={(event) => {
