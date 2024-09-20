@@ -1,7 +1,7 @@
 import jsIcon from '../seti-icons/javascript.svg';
 import defaultIcon from '../seti-icons/default.svg';
 import javaIcon from '../seti-icons/java.svg';
-import pythonIcon from '../seti-icons/default.svg';
+import pythonIcon from '../seti-icons/python.svg';
 
 // Utility function to get icon based on file extension
 export const getIconForFile = (fileName) => {

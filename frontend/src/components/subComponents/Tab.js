@@ -9,7 +9,6 @@ const Tab = ({ name, selected, position, onTabClose, selectedTab, openTabs }) =>
     const isLast = position === 'last';
 
 
-
     return (
         <div
             className={`group cursor-pointer h-full px-4 flex flex-row items-center justify-center 

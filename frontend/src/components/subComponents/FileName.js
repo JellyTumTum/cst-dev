@@ -4,7 +4,7 @@ import { Typography, useAccordion } from "@material-tailwind/react";
 import FileIcon from "./FileIcon";
 import { stripFileExtension } from "../../utils/iconUtils";
 
-const FileName = ({ name, fileType = "default", indentLevel = 0, onTabClick, selectedTab, openTabs }) => {
+const FileName = ({ name, isLink=false, indentLevel = 0, onTabClick, selectedTab, openTabs }) => {
     // TODO: Implement different file icons. 
 
     const handleClick = () => {
@@ -12,10 +12,10 @@ const FileName = ({ name, fileType = "default", indentLevel = 0, onTabClick, sel
     };
 
     return (
-        <div className={`cursor-pointer flex items-center hover:bg-explorerHover ${selectedTab === name ? 'bg-explorerSelected' : ''}`} onClick={handleClick} style={{ paddingLeft: `${indentLevel}rem` }}>
-            <div className='h-[1.6rem] w-[1px] mr-1 bg-borderColor'></div>
-            <FileIcon fileName={name} className="w-6 h-6 text-textMain" />
-            <Typography className={`text-textMain`}>{stripFileExtension(name)}</Typography>
+        <div className={` flex items-center ${isLink ? '' : 'hover:bg-explorerHover cursor-pointer'} ${selectedTab === name && !isLink ? 'bg-explorerSelected' : ''}`} onClick={handleClick} style={{ paddingLeft: `${indentLevel}rem` }}>
+            {!isLink && <div className='h-[1.6rem] w-[1px] mr-1 bg-borderColor'></div>}
+            <FileIcon fileName={name} linkColor={isLink} className="w-6 h-6 text-textMain cursor-pointer" />
+            <Typography className={`${isLink ? 'text-linkColor cursor-pointer' : 'text-textMain'} `}>{stripFileExtension(name)}</Typography>
         </div>
     );
 };

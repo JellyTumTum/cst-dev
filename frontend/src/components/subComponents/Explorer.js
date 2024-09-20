@@ -23,12 +23,12 @@ const Explorer = ({onTabClick, selectedTab, openTabs}) => {
             </div>
             <div className="">
                 <ToggleableFolder name="cst-dev" indentLevel={0} topLevel={true}>
-                    <FileName name="welcome.js" indentLevel={1} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
-                    <ToggleableFolder name="projects" indentLevel={1}>
-                        <FileName name="lyriclabs" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
-                        <FileName name="project SAM" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
+                    <FileName name="Welcome.js" indentLevel={1} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
+                    <ToggleableFolder name="Projects" indentLevel={1}>
+                        <FileName name="Lyriclabs.java" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
+                        <FileName name="Project SAM.py" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
                     </ToggleableFolder>
-                    <ToggleableFolder name="experience" indentLevel={1}>
+                    <ToggleableFolder name="Experience" indentLevel={1}>
 
                     </ToggleableFolder>
                 </ToggleableFolder>
