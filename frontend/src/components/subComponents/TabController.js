@@ -1,7 +1,7 @@
 import React from 'react';
 import Tab from './Tab';
 
-const TabController = ({ openTabs, selectedTab, onTabClick, onTabClose }) => {
+const TabController = ({ openTabs, selectedTab, onTabClick, onTabClose, pages }) => {
 
     // console.log(tabNames)
 
@@ -12,11 +12,11 @@ const TabController = ({ openTabs, selectedTab, onTabClick, onTabClose }) => {
             style={{ whiteSpace: 'nowrap' }} // Prevents wrapping of tabs
         >
             {openTabs &&
-                openTabs.map((name, index) => {
+                openTabs.map((page, index) => {
                     const position = index === 0 ? 'first' : index === openTabs.length - 1 ? 'last' : 'middle';
                     return (
-                        <div key={name} onClick={() => onTabClick(name)}>
-                            <Tab name={name} selected={name === selectedTab} position={position} onTabClose={onTabClose} selectedTab={selectedTab} openTabs={openTabs} />
+                        <div key={page} onClick={() => onTabClick(page.name)}>
+                            <Tab page={page} selected={page.name === selectedTab.name} position={position} onTabClose={onTabClose} selectedTab={selectedTab} openTabs={openTabs} pages={pages} />
                         </div>
                     );
                 })

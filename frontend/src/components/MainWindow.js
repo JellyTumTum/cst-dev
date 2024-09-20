@@ -4,7 +4,7 @@ import { Typography, Card } from '@material-tailwind/react';
 import TabController from "./subComponents/TabController";
 import Welcome from "./pages/Welcome";
 
-const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose }) => {
+const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose, pages }) => {
 
     // console.log(openTabs)
     // console.log(selectedTab)
@@ -18,6 +18,7 @@ const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose }) => {
                     selectedTab={selectedTab}
                     onTabClick={onTabClick}
                     onTabClose={onTabClose}
+                    pages={pages}
                 />
             </div>
             {
@@ -27,6 +28,7 @@ const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose }) => {
             <Welcome openTabs={openTabs}
                     selectedTab={selectedTab}
                     onLinkClick={onTabClick}
+                    pages={pages}
                     ></Welcome>
         </div>
 

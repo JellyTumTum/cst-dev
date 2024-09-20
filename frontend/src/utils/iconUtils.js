@@ -20,6 +20,7 @@ export const getIconForFile = (fileName) => {
 };
 
 export const stripFileExtension = (fileName) => {
+    // console.log(fileName + typeof(fileName))
     const lastDotIndex = fileName.lastIndexOf(".");
     if (lastDotIndex === -1) return fileName; // No extension found, return the full name
     return fileName.slice(0, lastDotIndex); // Return the name without the extension

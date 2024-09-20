@@ -2,7 +2,8 @@ import { Typography } from "@material-tailwind/react";
 import React from "react";
 import FileName from "../subComponents/FileName";
 
-const Welcome = ({ openTabs, selectedTab, onLinkClick}) => {
+
+const Welcome = ({ openTabs, selectedTab, onLinkClick, pages }) => {
 
 
     return (
@@ -20,7 +21,7 @@ const Welcome = ({ openTabs, selectedTab, onLinkClick}) => {
                     </FileName>
 
                 </div>
-                <div className="h-full w-[50%] bg-blue-500">
+                <div className="h-full w-[50%]">
                     <Typography className="text-textMain text-lg">Introduction</Typography>
                 </div>
             </div>

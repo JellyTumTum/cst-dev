@@ -6,7 +6,7 @@ const FileIcon = ({ fileName="default", linkColor=false}) => {
 
     // Check if it's a default icon to apply custom styling
     const requireStyling = iconUrl.includes("default");
-    console.log(requireStyling);
+    // console.log(requireStyling);
 
     return (
         // Conditional rendering based on whether requireStyling is true

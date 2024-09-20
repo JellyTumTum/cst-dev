@@ -1,39 +1,37 @@
 import { Typography } from "@material-tailwind/react";
 import React from "react";
-// import { useEffect, useState } from "react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import ToggleableFolder from "./ToggleableFolder";
 import FileName from "./FileName";
 
-
-const Explorer = ({onTabClick, selectedTab, openTabs}) => {
+const Explorer = ({ onTabClick, selectedTab, openTabs, pages }) => {
+    const renderFolder = (folderName, files, indentLevel = 0) => (
+        <ToggleableFolder name={folderName} indentLevel={indentLevel}>
+            {files.map((file, index) => (
+                <FileName
+                    key={index}
+                    name={file.name}
+                    indentLevel={indentLevel + 1}
+                    onTabClick={onTabClick}
+                    selectedTab={selectedTab}
+                    openTabs={openTabs}
+                />
+            ))}
+        </ToggleableFolder>
+    );
 
     return (
-        <div className="pt-4 h-full w-full bg-explorerMain 
-        border-r-[1px] border-borderColor">
-            <div className="h-[2rem] w-full pl-2 
-            flex flex-row justify-between pr-4 ">
-                <Typography
-                    className="px-5 pt-1 text-sm text-textMain">
-                    EXPLORER
-                </Typography>
-                <EllipsisHorizontalIcon
-                    className=" w-[1.75rem] h-[1.75rem] text-textSecondary ">
-                </EllipsisHorizontalIcon>
+        <div className="pt-4 h-full w-full bg-explorerMain border-r-[1px] border-borderColor">
+            <div className="h-[2rem] w-full pl-2 flex flex-row justify-between pr-4">
+                <Typography className="px-5 pt-1 text-sm text-textMain">EXPLORER</Typography>
+                <EllipsisHorizontalIcon className="w-[1.75rem] h-[1.75rem] text-textSecondary" />
             </div>
-            <div className="">
-                <ToggleableFolder name="cst-dev" indentLevel={0} topLevel={true}>
-                    <FileName name="Welcome.js" indentLevel={1} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
-                    <ToggleableFolder name="Projects" indentLevel={1}>
-                        <FileName name="Lyriclabs.java" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
-                        <FileName name="Project SAM.py" indentLevel={2} onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs}></FileName>
-                    </ToggleableFolder>
-                    <ToggleableFolder name="Experience" indentLevel={1}>
-
-                    </ToggleableFolder>
-                </ToggleableFolder>
+            <div>
+                {/* Dynamically render folders and files */}
+                {renderFolder("cst-dev", pages.filter(page => page.path.length === 1))}
+                {renderFolder("Projects", pages.filter(page => page.path.includes("Projects")), 1)}
+                {renderFolder("Experience", pages.filter(page => page.path.includes("Experience")), 1)}
             </div>
-
         </div>
     );
 };

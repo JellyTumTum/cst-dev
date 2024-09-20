@@ -4,7 +4,8 @@ import { DocumentIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import FileIcon from "./FileIcon";
 import { stripFileExtension } from "../../utils/iconUtils";
 
-const Tab = ({ name, selected, position, onTabClose, selectedTab, openTabs }) => {
+const Tab = ({ page, selected, position, onTabClose, selectedTab, openTabs, pages }) => {
+    console.log(page)
     const isFirst = position === 'first';
     const isLast = position === 'last';
 
@@ -17,16 +18,16 @@ const Tab = ({ name, selected, position, onTabClose, selectedTab, openTabs }) =>
                 ${selected ? 'border-t-[2px] border-t-selectedAccent bg-tabHover border-b-0' : 'border-b-[1px] border-b-borderColor'} 
                 bg-tabBackground hover:bg-tabHover`}
         >
-            <FileIcon fileName={name} className="h-5 w-5 mx-2" />
+            <FileIcon fileName={page.name} className="h-5 w-5 mx-2" />
             <Typography className={`text-md 
                 ${selected ? 'text-textMain' : 'text-textSecondary'} 
                 mr-2`}>
-                {stripFileExtension(name)}
+                {stripFileExtension(page.name)}
             </Typography>
             <div className={`h-6 w-6 rounded-md flex items-center justify-center hover:bg-tabCloseHover`}
                 onClick={(event) => {
                     event.stopPropagation(); // Prevent click from bubbling up
-                    onTabClose(name);
+                    onTabClose(page);
                 }}
 
             >
