@@ -7,7 +7,10 @@ import { stripFileExtension } from "../../utils/iconUtils";
 const FileName = ({ name, isLink=false, indentLevel = 0, onTabClick, selectedTab, openTabs }) => {
     // console.log(name)
     // TODO: Implement different file icons. 
-    const backgroundAdjustments = selectedTab.name === name && !isLink
+    let backgroundAdjustments = false
+    if (selectedTab) {
+        backgroundAdjustments = selectedTab.name === name && !isLink
+    }
 
     const handleClick = () => {
         onTabClick(name);

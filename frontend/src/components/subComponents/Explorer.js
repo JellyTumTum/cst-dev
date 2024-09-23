@@ -5,8 +5,8 @@ import ToggleableFolder from "./ToggleableFolder";
 import FileName from "./FileName";
 
 const Explorer = ({ onTabClick, selectedTab, openTabs, pages }) => {
-    const renderFolder = (folderName, files, indentLevel = 0) => (
-        <ToggleableFolder name={folderName} indentLevel={indentLevel}>
+    const renderFolder = (folderName, files, indentLevel = 0, topLevel=false) => (
+        <ToggleableFolder name={folderName} indentLevel={indentLevel} topLevel={topLevel}>
             {files.map((file, index) => (
                 <FileName
                     key={index}
@@ -28,7 +28,7 @@ const Explorer = ({ onTabClick, selectedTab, openTabs, pages }) => {
             </div>
             <div>
                 {/* Dynamically render folders and files */}
-                {renderFolder("cst-dev", pages.filter(page => page.path.length === 1))}
+                {renderFolder("cst-dev", pages.filter(page => page.path.length === 1), 0, true)}
                 {renderFolder("Projects", pages.filter(page => page.path.includes("Projects")), 1)}
                 {renderFolder("Experience", pages.filter(page => page.path.includes("Experience")), 1)}
             </div>

@@ -5,7 +5,7 @@ import FileIcon from "./FileIcon";
 import { stripFileExtension } from "../../utils/iconUtils";
 
 const Tab = ({ page, selected, position, onTabClose, selectedTab, openTabs, pages }) => {
-    console.log(page)
+    // console.log(page)
     const isFirst = position === 'first';
     const isLast = position === 'last';
 

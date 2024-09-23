@@ -28,7 +28,8 @@ module.exports = withMT({
                 tabBackground: 'var(--tab-bg-color)',
                 tabHover: 'var(--tab-hover-color)',
                 tabCloseHover: 'var(--tab-close-hover-color)',
-                linkColor: 'var(--link-color)'
+                linkColor: 'var(--link-color)',
+                lineNumberColor: 'var(--line-number-color)',
             },
             fontFamily: {
                 sans: ['Arial', 'sans-serif'],

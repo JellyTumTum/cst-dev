@@ -80,6 +80,7 @@ html, body, #root {
     --tab-hover-color: #1F1F1F;
     --tab-close-hover-color: #313232;
     --link-color: #4DAAFC;
+    --line-number-color: #6E7681;
   }
   
   /* Solarized Dark Theme */

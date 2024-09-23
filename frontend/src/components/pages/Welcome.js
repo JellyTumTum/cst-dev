@@ -9,16 +9,21 @@ const Welcome = ({ openTabs, selectedTab, onLinkClick, pages }) => {
     return (
         <div className="h-auto w-full px-[22.25%] pb-[33.3%] pt-[14.11%]">
             <Typography variant='h1' className="text-textMain mb-1">cst.dev</Typography>
-            <Typography variant='b1' className="text-textSecondary text-lg mb-[3.5rem]">Cameron Thomas, 21</Typography>
+            <Typography variant='paragraph' className="text-textSecondary text-lg mb-[3.5rem]">Cameron Thomas, 21</Typography>
             <div className="flex flex-row">
                 <div className="h-full w-[50%]">
                     <Typography className="text-textMain text-lg">Start</Typography>
-                    <FileName name="Experience" isLink={true} openTabs={openTabs} selectedTab={selectedTab} onTabClick={onLinkClick}>
-                    </FileName>
-                    <FileName name="Lyriclabs.java" isLink={true} openTabs={openTabs} selectedTab={selectedTab} onTabClick={onLinkClick}>
-                    </FileName>
-                    <FileName name="Project SAM.py" isLink={true} openTabs={openTabs} selectedTab={selectedTab} onTabClick={onLinkClick}>
-                    </FileName>
+                    {pages.map((page, index) => (
+                        <FileName
+                            key={index}
+                            name={page.name}
+                            indentLevel={0}
+                            onTabClick={onLinkClick}
+                            selectedTab={selectedTab}
+                            openTabs={openTabs}
+                            isLink={true}
+                        />
+                    ))}
 
                 </div>
                 <div className="h-full w-[50%]">

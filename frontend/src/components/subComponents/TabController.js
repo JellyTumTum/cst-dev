@@ -15,7 +15,7 @@ const TabController = ({ openTabs, selectedTab, onTabClick, onTabClose, pages })
                 openTabs.map((page, index) => {
                     const position = index === 0 ? 'first' : index === openTabs.length - 1 ? 'last' : 'middle';
                     return (
-                        <div key={page} onClick={() => onTabClick(page.name)}>
+                        <div key={page.name} onClick={() => onTabClick(page.name)}>
                             <Tab page={page} selected={page.name === selectedTab.name} position={position} onTabClose={onTabClose} selectedTab={selectedTab} openTabs={openTabs} pages={pages} />
                         </div>
                     );
