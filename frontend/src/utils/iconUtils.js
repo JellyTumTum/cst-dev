@@ -9,7 +9,8 @@ import fastApiIcon from '../other-icons/fastapi.svg';
 import tailwindIcon from '../other-icons/tailwindcss.svg'
 import psqlIcon from '../other-icons/postgresql.svg';
 import spotifyIcon from '../other-icons/spotify.svg';
-import d3Icon from '../other-icons/d3js.svg'
+import d3Icon from '../other-icons/d3js.svg';
+import mtIcon from '../other-icons/material-tailwind.svg';
 
 // Utility function to get icon based on file extension
 export const getIconForFile = (fileName) => {
@@ -42,6 +43,8 @@ export const getIconForFile = (fileName) => {
             return spotifyIcon;
         case 'd3':
             return d3Icon;
+        case 'material-tailwind':
+            return mtIcon;
         default:
             return defaultIcon; // Fallback to default icon if no match
     }

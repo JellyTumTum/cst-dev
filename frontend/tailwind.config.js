@@ -34,6 +34,10 @@ module.exports = withMT({
             fontFamily: {
                 sans: ['Arial', 'sans-serif'],
 
+            },
+            screens: {
+                sm: '640px',
+                md: '768px',
             }
         },
     },

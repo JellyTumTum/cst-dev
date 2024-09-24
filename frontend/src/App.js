@@ -9,11 +9,17 @@ import Welcome from './components/pages/Welcome';
 
 function App() {
     const [theme, setTheme] = useState('theme-dark-modern');
+    const [sideBarWidth, setSideBarWidth] = useState(100000)
     const pages = [
         {
             name: "Welcome.txt",
             path: ["cst-dev"],
             breadcrumbs: ["cst-dev", "Welcome.txt"]
+        },
+        {
+            name: "This Website.js",
+            path: ["cst-dev", "Projects"],
+            breadcrumbs: ["cst-dev", "Projects", "This Website.js"]
         },
         {
             name: "Lyric Labs.java",
@@ -32,8 +38,9 @@ function App() {
         }
     ];
 
-    const [selectedTab, setSelectedTab] = useState(null); // will eventually be welcome as the default tab
-    const [openTabs, setOpenTabs] = useState(null); // Store open tabs as page object
+    const [selectedTab, setSelectedTab] = useState(pages[0]); // will eventually be welcome as the default tab
+    const [openTabs, setOpenTabs] = useState([pages[0]]); // Store open tabs as page object
+    const [isExplorerOpen, setExplorerOpen] = useState(true);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme') || 'theme-dark-modern';
@@ -59,7 +66,7 @@ function App() {
                 //  empty prevTabs
                 return [page];
             }
-            
+
         });
     };
 
@@ -78,7 +85,6 @@ function App() {
                     console.log(updatedTabs[updatedTabs.length - 1]);
                 } else {
                     setSelectedTab(null);
-                    console.log("NO tab to set as new selected")
                 }
             }
 
@@ -86,28 +92,51 @@ function App() {
         });
     };
 
+    const checkSideBarWidth = (container) => {
+        setSideBarWidth(container.scrollWidth); // container.clientWidth
+    };
+
+    useEffect(() => {
+        const container = document.getElementById('sidebar');
+        checkSideBarWidth(container); // Check initially
+        window.addEventListener('resize', checkSideBarWidth); // Recheck on resize
+
+        return () => window.removeEventListener('resize', checkSideBarWidth);
+    }, [isExplorerOpen]);
+
     return (
         <div className='min-h-screen h-full w-full bg-mainBackground flex flex-col'>
-            <div className="h-[2.5rem] w-full">
+            {/* TopBar */}
+            <div className="h-[2.5rem] min-h-[2.5rem] w-full">
                 <TopBar />
             </div>
 
-            <div className="flex-grow flex">
-                <div className="w-[19.5rem] h-full">
-                    <SideBar onTabClick={onTabClick} selectedTab={selectedTab} openTabs={openTabs} pages={pages} />
+            {/* Main Content: SideBar and MainWindow */}
+            <div className="flex-grow flex overflow-hidden">
+                <div id='sidebar' className={`${ isExplorerOpen ? 'w-[19.5rem]' : 'w-[4.25rem'} h-full`}>
+                    <SideBar
+                        onTabClick={onTabClick}
+                        selectedTab={selectedTab}
+                        openTabs={openTabs}
+                        pages={pages}
+                        isExplorerOpen={isExplorerOpen}
+                        setExplorerOpen={setExplorerOpen}
+                    />
                 </div>
 
-                <div className="flex-grow bg-mainBackground overflow-auto">
+                <div className="flex-grow bg-mainBackground overflow-hidden">
                     <MainWindow
                         selectedTab={selectedTab}
                         openTabs={openTabs}
                         onTabClick={onTabClick}
                         onTabClose={onTabClose}
                         pages={pages}
+                        isExplorerOpen={isExplorerOpen}
                     />
                 </div>
             </div>
 
+            {/* BottomBar */}
             <div className="h-[2rem] w-full">
                 <BottomBar />
             </div>

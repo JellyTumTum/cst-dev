@@ -31,8 +31,8 @@ const Tab = ({ page, selected, position, onTabClose, selectedTab, openTabs, page
                 }}
 
             >
-                <XMarkIcon className={`h-5 w-5 transition-opacity duration-300 
-        ${selected ? 'text-textMain opacity-100' : 'text-borderColor opacity-0 group-hover:opacity-100 group-hover:text-textSecondary'}
+                <XMarkIcon className={`h-5 w-5 transition-opacity duration-300 sm:text-textSecondary
+        ${selected ? 'text-textMain opacity-100' : 'text-borderColor sm:opacity-100 md:opacity-0 group-hover:opacity-100 group-hover:text-textSecondary '}
     `}></XMarkIcon>
             </div>
 

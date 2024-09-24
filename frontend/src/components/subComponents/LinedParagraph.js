@@ -18,7 +18,7 @@ const LinedParagraph = ({ content, startingNumber = 1, closeable = true }) => {
     };
 
     return (
-        <div className=" overflow-hidden flex-row">
+        <div className=" overflow-hidden flex-row mr-4">
             {/* Line numbers and indentation */}
             <div className="group text-lineNumberColor ml-[2rem]">
                 {lines.map((line, index) => {
@@ -28,7 +28,7 @@ const LinedParagraph = ({ content, startingNumber = 1, closeable = true }) => {
                         <div key={index} className="flex">
                             {/* Line number */}
                             {!isCollapsed || index === 0 ? (
-                                <div className="text-md w-12 flex flex-row min-w-12">
+                                <div className="text-md w-12 flex flex-row min-w-12 hidden sm:flex">
                                     <Typography>{index + 1 + (startingNumber - 1)}</Typography>
                                     {index === 0 ? (
                                         <span
@@ -52,8 +52,8 @@ const LinedParagraph = ({ content, startingNumber = 1, closeable = true }) => {
                                     {/* Render indentation levels */}
                                     {Array(indentationLevel).fill(null).map((_, indentIndex) => (
                                         <div key={indentIndex} className="flex flex-row">
-                                            <div className="w-[0.1rem] h-full bg-borderColor"></div>
-                                            <div className="w-[2.5rem] h-full"></div>
+                                            <div className="w-[0.1rem] h-full bg-borderColor hidden sm:flex"></div>
+                                            <div className="w-[2.5rem] h-full hidden sm:flex"></div>
                                         </div>
                                     ))}
 
@@ -62,7 +62,7 @@ const LinedParagraph = ({ content, startingNumber = 1, closeable = true }) => {
                                         className={`flex`}
                                     >
 
-                                        <Typography className="text-textMain break-words">
+                                        <Typography className={`text-textMain break-words ${(index === 0 && closeable) ? 'font-bold sm:font-normal' : ''}`}>
                                             {line.trim() === "" ? " " : line}
                                         </Typography>
                                     </div>

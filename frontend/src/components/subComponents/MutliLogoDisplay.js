@@ -6,8 +6,12 @@ const MultiLogoDisplay = ({ logoNames = [], mainText, subText }) => {
         <Card className="
             bg-explorerMain border-2 border-borderColor
             w-auto h-auto flex flex-col items-center justify-center">
-            
-            <div className='w-auto h-28 flex flex-row justify-center items-center gap-4'>
+
+            <div
+                className={`w-auto h-auto grid gap-4 p-2 
+                            ${logoNames.length % 2 === 0 && logoNames.length > 2 ? 'grid-cols-2 sm:grid-cols-2 ' : 'grid-cols-1'} 
+                            md:flex md:flex-row justify-center items-center`}
+            >
                 {logoNames.map((logoName, index) => {
                     const iconUrl = getIconForFile("." + logoName);
                     return (
@@ -22,9 +26,10 @@ const MultiLogoDisplay = ({ logoNames = [], mainText, subText }) => {
                 })}
             </div>
 
+
             <div className="flex flex-col justify-center items-center mb-2">
                 {mainText && (
-                    <Typography className="text-textMain text-lg px-2">
+                    <Typography className="text-textMain text-center text-lg px-2">
                         {mainText}
                     </Typography>
                 )}
