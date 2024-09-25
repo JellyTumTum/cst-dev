@@ -33,11 +33,14 @@ module.exports = withMT({
             },
             fontFamily: {
                 sans: ['Arial', 'sans-serif'],
+                mono: ['Consolas', 'Courier New', 'monospace'],
 
             },
             screens: {
+                xs: '300px',
                 sm: '640px',
                 md: '768px',
+                xxl: '1260px',
             }
         },
     },

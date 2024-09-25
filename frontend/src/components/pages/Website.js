@@ -13,12 +13,12 @@ const Website = ({ }) => {
     When I set out to create a website to showcase my projects, no particular design immediately stood out to me. I had some ideas, but none felt quite right. Then, it hit me: I spend so much time working inside an IDE, why not emulate that experience for my own website? It provided a creative yet familiar foundation, and using TailwindCSS, I could focus on refining my frontend skills with the clear goal in mind.
     All credit goes to Microsoft—if I did a good job, it should be apparent that VS Code was my reference. my own text editor / IDE of choice.`
     const adaptationParagraph = `Adaptations:
-    To get through the prototyping phase, I needed a solid concept. IDEs and text editors are all about presenting information efficiently, so I removed the need for browser tabs and introduced internal tabs within the site, just like in VS Code. Navigating through files was a natural fit for the classic file tree structure, offering intuitive folder categorization and expandable lists.
+    To get through the prototyping phase, I needed a solid concept. IDEs and text editors are all about presenting information efficiently, so I removed the need for browser tabs and introduced internal tabs within the site, just like in VS Code. Navigating through pages was a natural fit for the classic file tree structure, offering intuitive folder categorization and expandable lists.
     
     With the core features in place, I had three choices for each additional aspect:
-        - Replicate the feature with an adapted use case.
-        - Include the visual elements without interactive functionality.
-        - Ignore features that didn't suit a non-IDE environment.
+        1. Replicate the feature with an adapted use case.
+        2. Include the visual elements without interactive functionality.
+        3. Ignore features that didn't suit a non-IDE environment, or presented too large of a challenge for no major purpose 
 
     Ultimately, this project provided a fun creative challenge, pushing me to achieve a high standard while maintaining the design’s resemblance to the IDE I use daily.`
 

@@ -14,7 +14,7 @@ const LinedParagraph = ({ content, startingNumber = 1, closeable = true }) => {
 
     const getIndentationLevel = (line) => {
         const leadingSpaces = line.match(/^(\s*)/)[0].length;
-        return Math.floor(leadingSpaces / 4); // 4 spaces for a tab
+        return Math.floor(leadingSpaces / 4); // 4 space tab gang
     };
 
     return (
@@ -29,7 +29,7 @@ const LinedParagraph = ({ content, startingNumber = 1, closeable = true }) => {
                             {/* Line number */}
                             {!isCollapsed || index === 0 ? (
                                 <div className="text-md w-12 flex flex-row min-w-12 hidden sm:flex">
-                                    <Typography>{index + 1 + (startingNumber - 1)}</Typography>
+                                    <Typography className="font-mono">{index + 1 + (startingNumber - 1)}</Typography>
                                     {index === 0 ? (
                                         <span
                                             onClick={toggleCollapse}
@@ -62,7 +62,7 @@ const LinedParagraph = ({ content, startingNumber = 1, closeable = true }) => {
                                         className={`flex`}
                                     >
 
-                                        <Typography className={`text-textMain break-words ${(index === 0 && closeable) ? 'font-bold sm:font-normal' : ''}`}>
+                                        <Typography className={`text-textMain font-mono break-words ${(index === 0 && closeable) ? 'font-bold sm:font-normal' : ''}`}>
                                             {line.trim() === "" ? " " : line}
                                         </Typography>
                                     </div>
