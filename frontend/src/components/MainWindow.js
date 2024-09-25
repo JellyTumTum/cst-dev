@@ -39,7 +39,7 @@ const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose, pages, isEx
     return (
         <div className="relative h-full w-full flex flex-col">
             {openTabs.length !== 0 && 
-                <div id='tabControllerDiv' className={` ${hasScrollbar ? 'h-[4rem] min-h-[4rem]' : 'h-[3rem] min-h-[3rem]'} w-full overflow-x-auto scrollbar-horizontal-only`}>
+                <div id='tabControllerDiv' className={` ${hasScrollbar ? 'h-[4rem] min-h-[4rem]' : 'h-[3rem] min-h-[3rem]'} w-full scrollbar-horizontal-only`}>
                     <TabController
                         openTabs={openTabs}
                         selectedTab={selectedTab}

@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { Card } from "@material-tailwind/react";
+import DropdownButton from "./DropdownButton";
 
-const Dropdown = ({ label, options, onSelect }) => {
+const Dropdown = ({ labels, position = "below" }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -23,35 +25,31 @@ const Dropdown = ({ label, options, onSelect }) => {
         };
     }, []);
 
-    return (
-        <div className="relative inline-block text-left" ref={dropdownRef}>
-            <div className="flex items-center cursor-pointer" onClick={toggleDropdown}>
-                <span className="text-textMain">{label}</span>
-                <ChevronDownIcon className="ml-2 w-5 h-5 text-textSecondary" />
-            </div>
+    // Determine the positioning classes
+    const getPositionClasses = () => {
+        switch (position) {
+            case 'above':
+                return 'bottom-full mb-2'; // Above the button
+            case 'below':
+                return 'top-full'; // Below the button
+            case 'left':
+                return 'right-full mr-2'; // To the left of the button
+            case 'right':
+                return 'left-full ml-2'; // To the right of the button
+            default:
+                return 'top-full mt-2'; // Default to below
+        }
+    };
 
-            {isOpen && (
-                <div
-                    className="absolute z-10 mt-2 w-48 rounded-md shadow-lg bg-explorerMain
-                    ring-1 ring-black ring-opacity-5 focus:outline-none"
-                >
-                    <div className="py-1">
-                        {options.map((option, index) => (
-                            <div
-                                key={index}
-                                className="block px-4 py-2 text-textSecondary text-sm hover:bg-explorerHover hover:text-textMain cursor-pointer"
-                                onClick={() => {
-                                    onSelect(option);
-                                    setIsOpen(false); // Close dropdown after selection
-                                }}
-                            >
-                                {option.label}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-        </div>
+    return (
+        <Card
+            ref={dropdownRef}
+            className={`absolute ${getPositionClasses()} bg-dropdownBackground border-[1px] rounded-lg border-borderColor w-auto h-auto shadow-lg p-1`}
+        >
+            <DropdownButton label="Test"></DropdownButton>
+
+        </Card>
+
     );
 };
 

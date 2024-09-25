@@ -70,7 +70,7 @@ html, body, #root {
     --text-secondary-color: #8C8C8C;
     --border-color: #2B2B2B;
     --top-bar-bg-color: #181818;
-    --top-bar-hover-color: #2D2E2E;
+    --top-bar-hover-color: #454646;
     --top-bar-search-box-color: #1F1F1F;
     --side-bar-main-color: #181818;
     --explorer-main-color: #181818;
@@ -86,6 +86,7 @@ html, body, #root {
     --tab-close-hover-color: #313232;
     --link-color: #4DAAFC;
     --line-number-color: #6E7681;
+    --dropdown-background-color: #1F1F1F;
   }
   
   /* Solarized Dark Theme */

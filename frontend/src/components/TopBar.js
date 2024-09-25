@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Typography, Card } from '@material-tailwind/react';
 import { CodeBracketIcon, ArrowLeftIcon, ArrowRightIcon, MinusIcon, Square2StackIcon, XMarkIcon, StrikethroughIcon } from "@heroicons/react/24/outline";
 import TopBarButton from "./subComponents/TopBarButton";
+import Dropdown from "./subComponents/Dropdown";
 
 const TopBar = ({ tabStack, openTabs }) => {
 
@@ -54,12 +55,14 @@ const TopBar = ({ tabStack, openTabs }) => {
                                 <TopBarButton name={"File"} clickable={false} isTouch={isTouch} />
                                 <TopBarButton name={"Edit"} clickable={false} isTouch={isTouch} />
                                 <TopBarButton name={"Selection"} clickable={false} isTouch={isTouch} />
-                                <TopBarButton name={"View"} clickable={true} isTouch={isTouch} />
+                                <TopBarButton name={"View"} clickable={true}>
+                                    <Dropdown labels={["Theme"]} />
+                                </TopBarButton>
                                 <TopBarButton name={"Go"} clickable={false} isTouch={isTouch} />
                                 <TopBarButton name={"Run"} clickable={false} isTouch={isTouch} />
 
                                 <div className="hidden xxl:flex flex-row">
-                                    
+
                                     <TopBarButton name={"Terminal"} clickable={false} isTouch={isTouch} />
                                     <TopBarButton name={"Help"} clickable={false} isTouch={isTouch} />
                                 </div>
