@@ -4,12 +4,40 @@ import { CodeBracketIcon, ArrowLeftIcon, ArrowRightIcon, MinusIcon, Square2Stack
 import TopBarButton from "./subComponents/TopBarButton";
 import Dropdown from "./subComponents/Dropdown";
 
-const TopBar = ({ tabStack, openTabs }) => {
+const TopBar = ({ tabStack, openTabs, changeTheme }) => {
 
     const [isTouch, setIsTouch] = useState(false);
     const [hideButtons, setHideButtons] = useState(false); // Controls visibility of buttons
     const [hideMoreButtons, setHideMoreButtons] = useState(false);
     const [showJustNameBar, setShowJustNameBar] = useState(false);
+    const [showViewDropdown, setShowViewDropdown] = useState(false);
+    const [showThemeDropdown, setShowThemeDropdown] = useState(false);
+
+    const themeDropdownInformation = [
+        {
+            label: "Light (Modern)",
+            onClick: () => console.log("Light (Modern) set") // Clickable item
+        },
+        {
+            label: "Dark (Modern)",
+            onClick: () => console.log("Dark (Modern) set") // Another clickable item
+        },
+        {
+            label: "Solarized Dark",
+            onClick: () => console.log("Solarized Dark set") // Another clickable item
+        }
+    ];
+    const viewDropdownInformation = [
+        {
+            label: "Change Theme",
+            children: (
+                <Dropdown information={themeDropdownInformation} position="right" fade={true} setShowVariable={null} showVariable={true}></Dropdown>
+            ),
+        },
+    ];
+
+    
+
 
     function isTouchDevice() {
         return window.matchMedia('(pointer: coarse)').matches;
@@ -55,8 +83,11 @@ const TopBar = ({ tabStack, openTabs }) => {
                                 <TopBarButton name={"File"} clickable={false} isTouch={isTouch} />
                                 <TopBarButton name={"Edit"} clickable={false} isTouch={isTouch} />
                                 <TopBarButton name={"Selection"} clickable={false} isTouch={isTouch} />
-                                <TopBarButton name={"View"} clickable={true}>
-                                    <Dropdown labels={["Theme"]} />
+                                <TopBarButton name={"View"} clickable={true} onClick={() => setShowViewDropdown(prev => !prev)} showVariable={showViewDropdown}>
+                                    <Dropdown information={viewDropdownInformation}
+                                    setShowVariable={setShowViewDropdown}
+                                    showVariable={showViewDropdown}>
+                                    </Dropdown>
                                 </TopBarButton>
                                 <TopBarButton name={"Go"} clickable={false} isTouch={isTouch} />
                                 <TopBarButton name={"Run"} clickable={false} isTouch={isTouch} />

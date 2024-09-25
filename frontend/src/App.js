@@ -48,6 +48,12 @@ function App() {
         document.documentElement.className = savedTheme; // Apply the theme class to <html>
     }, []);
 
+    const changeTheme = (themeName) => {
+        setTheme(themeName);
+        localStorage.setItem('theme', themeName)
+        document.documentElement.className = themeName; // Apply the theme class to <html>
+    };
+
     const onTabClick = (tabName) => {
         console.log(openTabs)
         console.log(selectedTab)
@@ -108,7 +114,7 @@ function App() {
         <div className='min-h-screen h-full w-full bg-mainBackground flex flex-col'>
             {/* TopBar */}
             <div className="h-[2.5rem] min-h-[2.5rem] w-full">
-                <TopBar />
+                <TopBar changeTheme={changeTheme}/>
             </div>
 
             {/* Main Content: SideBar and MainWindow */}
@@ -137,7 +143,7 @@ function App() {
             </div>
 
             {/* BottomBar */}
-            <div className="h-[2rem] w-full">
+            <div className="h-[1.8rem] w-full">
                 <BottomBar />
             </div>
         </div>
