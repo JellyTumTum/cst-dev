@@ -31,6 +31,7 @@ module.exports = withMT({
                 linkColor: 'var(--link-color)',
                 lineNumberColor: 'var(--line-number-color)',
                 dropdownBackground: 'var(--dropdown-background-color)'
+                
             },
             fontFamily: {
                 sans: ['Arial', 'sans-serif'],

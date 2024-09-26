@@ -5,7 +5,7 @@ import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import ToggleableFolder from "./ToggleableFolder";
 import FileName from "./FileName";
 
-const Explorer = ({ onTabClick, selectedTab, openTabs, pages }) => {
+const Explorer = ({ onTabClick, tabPointer, setTabPointer, selectedTab, openTabs, pages }) => {
 
     const [openFolders, setOpenFolders] = useState(() => ({
         "cst-dev": true,

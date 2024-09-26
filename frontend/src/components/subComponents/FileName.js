@@ -4,7 +4,7 @@ import { Typography, useAccordion } from "@material-tailwind/react";
 import FileIcon from "./FileIcon";
 import { stripFileExtension } from "../../utils/iconUtils";
 
-const FileName = ({ name, isLink=false, indentLevel = 0, onTabClick, selectedTab, openTabs }) => {
+const FileName = ({ name, isLink=false, indentLevel = 0, onTabClick, tabPointer, setTabPointer, selectedTab, openTabs }) => {
     // console.log(name)
     // TODO: Implement different file icons. 
     let backgroundAdjustments = false

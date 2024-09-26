@@ -10,7 +10,7 @@ import Website from "./pages/Website";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 import FileName from "./subComponents/FileName";
 
-const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose, pages, isExplorerOpen }) => {
+const MainWindow = ({ onTabClick, tabPointer, setTabPointer, goBack, selectedTab, openTabs, onTabClose, pages, isExplorerOpen }) => {
     const pageComponents = {
         'Welcome.txt': Welcome,
         'Lyric Labs.java': Lyriclabs,
@@ -44,7 +44,10 @@ const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose, pages, isEx
                         openTabs={openTabs}
                         selectedTab={selectedTab}
                         onTabClick={onTabClick}
+                        tabPointer={tabPointer}
+                        setTabPointer={setTabPointer}
                         onTabClose={onTabClose}
+                        goBack={goBack}
                         pages={pages}
                     />
                 </div>
@@ -63,6 +66,8 @@ const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose, pages, isEx
                         openTabs={openTabs}
                         selectedTab={selectedTab}
                         onLinkClick={onTabClick}
+                        tabPointer={tabPointer}
+                        setTabPointer={setTabPointer}
                         pages={pages}
                         isExplorerOpen={isExplorerOpen}
                     />
@@ -78,6 +83,8 @@ const MainWindow = ({ onTabClick, selectedTab, openTabs, onTabClose, pages, isEx
                                     name={page.name}
                                     indentLevel={0}
                                     onTabClick={onTabClick}
+                                    tabPointer={tabPointer}
+                                    setTabPointer={setTabPointer}
                                     selectedTab={selectedTab}
                                     openTabs={openTabs}
                                     isLink={true}

@@ -67,10 +67,10 @@ html, body, #root {
 
   .theme-dark-modern {
     --text-main-color: #C2C4C4;
-    --text-secondary-color: #8C8C8C;
+    --text-secondary-color: #8C8C8C; 
     --border-color: #2B2B2B;
     --top-bar-bg-color: #181818;
-    --top-bar-hover-color: #454646;
+    --top-bar-hover-color: #313232;
     --top-bar-search-box-color: #1F1F1F;
     --side-bar-main-color: #181818;
     --explorer-main-color: #181818;

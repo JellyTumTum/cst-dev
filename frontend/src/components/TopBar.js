@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Card } from '@material-tailwind/react';
-import { CodeBracketIcon, ArrowLeftIcon, ArrowRightIcon, MinusIcon, Square2StackIcon, XMarkIcon, StrikethroughIcon } from "@heroicons/react/24/outline";
+import { Typography, Card, Tooltip } from '@material-tailwind/react';
+import { CodeBracketIcon, ArrowLeftIcon, ArrowRightIcon, MinusIcon, Square2StackIcon, StopIcon, XMarkIcon, StrikethroughIcon } from "@heroicons/react/24/outline";
 import TopBarButton from "./subComponents/TopBarButton";
 import Dropdown from "./subComponents/Dropdown";
 
-const TopBar = ({ tabStack, openTabs, changeTheme }) => {
-
+const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, setTabHistory, goBack, goForward, selectedTab, setSelectedTab, changeTheme }) => {
+    console.log(openTabs)
+    console.log(tabHistory)
+    console.log(tabPointer)
     const [isTouch, setIsTouch] = useState(false);
     const [hideButtons, setHideButtons] = useState(false); // Controls visibility of buttons
     const [hideMoreButtons, setHideMoreButtons] = useState(false);
     const [showJustNameBar, setShowJustNameBar] = useState(false);
     const [showViewDropdown, setShowViewDropdown] = useState(false);
     const [showThemeDropdown, setShowThemeDropdown] = useState(false);
+
+    const [isFullscreen, setIsFullscreen] = useState(false);
 
     const themeDropdownInformation = [
         {
@@ -36,7 +40,42 @@ const TopBar = ({ tabStack, openTabs, changeTheme }) => {
         },
     ];
 
-    
+    const toggleFullscreen = () => {
+        if (!isFullscreen) {
+            document.documentElement.requestFullscreen().catch((err) => {
+                console.log(`Error: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen().catch((err) => {
+                console.log(`Error: ${err.message}`);
+            });
+        }
+        setIsFullscreen(!isFullscreen);
+    };
+
+    const checkFullscreenStatus = () => {
+        if (document.fullscreenElement) {
+            setIsFullscreen(true);
+        } else {
+            setIsFullscreen(false);
+        }
+    };
+
+    useEffect(() => {
+        checkFullscreenStatus();
+
+        // Optional: Listen for fullscreen changes in case the user toggles fullscreen manually
+        const fullscreenChangeHandler = () => {
+            checkFullscreenStatus();
+        };
+
+        document.addEventListener('fullscreenchange', fullscreenChangeHandler);
+
+        return () => {
+            document.removeEventListener('fullscreenchange', fullscreenChangeHandler);
+        };
+    }, []);
+
 
 
     function isTouchDevice() {
@@ -59,7 +98,7 @@ const TopBar = ({ tabStack, openTabs, changeTheme }) => {
             } else {
                 setHideMoreButtons(false);
             }
-            if (window.innerWidth < 300) {
+            if (window.innerWidth < 390) {
                 setShowJustNameBar(true);
             } else {
                 setShowJustNameBar(false);
@@ -85,8 +124,8 @@ const TopBar = ({ tabStack, openTabs, changeTheme }) => {
                                 <TopBarButton name={"Selection"} clickable={false} isTouch={isTouch} />
                                 <TopBarButton name={"View"} clickable={true} onClick={() => setShowViewDropdown(prev => !prev)} showVariable={showViewDropdown}>
                                     <Dropdown information={viewDropdownInformation}
-                                    setShowVariable={setShowViewDropdown}
-                                    showVariable={showViewDropdown}>
+                                        setShowVariable={setShowViewDropdown}
+                                        showVariable={showViewDropdown}>
                                     </Dropdown>
                                 </TopBarButton>
                                 <TopBarButton name={"Go"} clickable={false} isTouch={isTouch} />
@@ -107,15 +146,21 @@ const TopBar = ({ tabStack, openTabs, changeTheme }) => {
 
                     {/* Center Section with Card */}
                     <div className="flex mr-4 sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2 items-center">
-                        <div className="hover:bg-topBarHover rounded-lg flex justify-center items-center">
-                            <ArrowLeftIcon className="h-[1.1rem] w-[1.1rem] text-textSecondary m-1"></ArrowLeftIcon>
+                        <div onClick={goBack} className={`${tabHistory.length > tabPointer && tabPointer > 0 ? 'hover:bg-topBarHover' : ''} rounded-lg flex justify-center items-center`}>
+                            <ArrowLeftIcon className={`h-[1.1rem] w-[1.1rem] m-1 
+                                ${tabHistory.length > tabPointer && tabPointer > 0 ? 'text-textMain' : 'text-textSecondary'}`}>
+
+                            </ArrowLeftIcon>
                         </div>
-                        <div className="hover:bg-topBarHover rounded-lg flex justify-center items-center mr-2">
-                            <ArrowRightIcon className="h-[1.1rem] w-[1.1rem] text-textSecondary m-1"></ArrowRightIcon>
+                        <div onClick={goForward} className={`${tabHistory.length > tabPointer + 1 ? 'hover:bg-topBarHover' : ''} rounded-lg flex justify-center items-center mr-2`}>
+                            <ArrowRightIcon className={`h-[1.1rem] w-[1.1rem] m-1
+                                ${tabHistory.length > tabPointer + 1 ? 'text-textMain' : 'text-textSecondary'}`}>
+
+                            </ArrowRightIcon>
                         </div>
 
                         <Card className=" opacity-0 xs:opacity-100 bg-topBarSearchBox border-[1px] border-borderColor  
-                            min-w-[10rem] w-[10rem] md:w-[10rem] lg:w-[20rem] xl-w-[40rem]
+                            w-[10rem] md:w-[10rem] lg:w-[20rem] xl-w-[40rem]
                             flex justify-center items-center
                             rounded-md">
                             <Typography className="text-textSecondary text-md">
@@ -128,15 +173,29 @@ const TopBar = ({ tabStack, openTabs, changeTheme }) => {
                     {!hideMoreButtons &&
                         <>
                             <div className="flex flex-row">
-                                <div className="h-[2.5rem] w-[2.5rem]  flex justify-center items-center">
-                                    <MinusIcon className="text-textSecondary w-4 h-4"></MinusIcon>
+                                <div onClick={() => window.open('https://www.ecosia.org/')} className="h-[2.5rem] w-[2.5rem] flex justify-center items-center hover:bg-topBarHover">
+                                    <MinusIcon className="text-textMain w-4 h-4"></MinusIcon>
                                 </div>
-                                <div className="h-[2.5rem] w-[2.5rem] flex justify-center items-center">
-                                    <Square2StackIcon className="text-textSecondary w-3 h-3 transform scale-x-[-1]"></Square2StackIcon>
+                                <div onClick={toggleFullscreen} className="h-[2.5rem] w-[2.5rem] flex justify-center items-center hover:bg-topBarHover">
+                                    {isFullscreen ?
+                                        <>
+                                            <Square2StackIcon className="text-textMain w-3 h-3 transform scale-x-[-1]"></Square2StackIcon>
+                                        </>
+                                        :
+                                        <>
+                                            <StopIcon className="text-textMain w-3 h-3 transform scale-x-[-1]"></StopIcon>
+                                        </>
+                                    }
+
                                 </div>
-                                <div className="h-[2.5rem] w-[2.5rem]  flex justify-center items-center">
-                                    <XMarkIcon className="text-textSecondary w-4 h-4"></XMarkIcon>
-                                </div>
+                                <Tooltip className="border-[1px] border-borderColor bg-dropdownBackground -mt-4" content={
+                                    <>
+                                        <Typography className="text-textMain text-sm text-red-400">Cannot close tab due to browser restrictions</Typography>
+                                    </>}>
+                                    <div className="h-[2.5rem] w-[2.5rem] flex justify-center items-center group cursor-not-allowed">
+                                        <XMarkIcon className="text-textSecondary w-4 h-4 group-hover:text-red-500"></XMarkIcon>
+                                    </div>
+                                </Tooltip>
                             </div>
                         </>
                     }

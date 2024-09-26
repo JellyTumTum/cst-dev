@@ -1,7 +1,7 @@
 import React from 'react';
 import Tab from './Tab';
 
-const TabController = ({ openTabs, selectedTab, onTabClick, onTabClose, pages }) => {
+const TabController = ({ openTabs, selectedTab, onTabClick, tabPointer, setTabPointer, onTabClose, pages }) => {
 
     // console.log(tabNames)
 
