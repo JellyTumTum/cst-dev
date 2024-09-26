@@ -7,7 +7,7 @@ import Programming from "./pages/Programming";
 import Lyriclabs from "./pages/Lyriclabs";
 import ProjectSAM from "./pages/ProjectSAM";
 import Website from "./pages/Website";
-import { FaceFrownIcon } from "@heroicons/react/24/outline";
+import { FaceFrownIcon, CodeBracketIcon, CodeBracketSquareIcon } from "@heroicons/react/24/outline";
 import FileName from "./subComponents/FileName";
 
 const MainWindow = ({ onTabClick, tabPointer, setTabPointer, goBack, selectedTab, openTabs, onTabClose, pages, isExplorerOpen }) => {
