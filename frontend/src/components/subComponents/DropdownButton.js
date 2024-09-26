@@ -25,7 +25,7 @@ const DropdownButton = ({ label, onClick, children, keybind = null }) => {
 
     return (
         <Card
-            className="relative bg-dropdownBackground items-center hover:bg-selectedAccent w-auto min-w-48 h-8 rounded-lg shadow-none px-4 flex flex-grow flex-row justify-between gap-4"
+            className="relative bg-dropdownBackground items-center hover:bg-buttonHover w-auto min-w-48 h-8 rounded-lg shadow-none px-4 flex flex-grow flex-row justify-between gap-4"
             onClick={onClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

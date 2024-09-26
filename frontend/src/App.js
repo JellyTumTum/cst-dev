@@ -39,8 +39,6 @@ function App() {
         }
     ];
 
-
-
     const [selectedTab, setSelectedTab] = useState(pages[0]); 
     const [openTabs, setOpenTabs] = useState([pages[0]]);
     const [isExplorerOpen, setExplorerOpen] = useState(true);
@@ -103,13 +101,20 @@ function App() {
 
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme') || 'theme-dark-modern';
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        let savedTheme = localStorage.getItem('theme') || 'notheme';
+        if (prefersDark && savedTheme === 'notheme') {
+            savedTheme = localStorage.getItem('theme') || 'theme-dark-modern';
+        } else if (savedTheme === 'notheme') {
+            savedTheme = localStorage.getItem('theme') || 'theme-light-modern';
+        }
         setTheme(savedTheme);
         document.documentElement.className = savedTheme;
     }, []);
 
     const changeTheme = (themeName) => {
         setTheme(themeName);
+        console.log(`set theme to ${themeName}`)
         localStorage.setItem('theme', themeName)
         document.documentElement.className = themeName;
     };

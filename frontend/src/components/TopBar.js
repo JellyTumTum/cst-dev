@@ -5,9 +5,7 @@ import TopBarButton from "./subComponents/TopBarButton";
 import Dropdown from "./subComponents/Dropdown";
 
 const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, setTabHistory, goBack, goForward, selectedTab, setSelectedTab, changeTheme }) => {
-    console.log(openTabs)
-    console.log(tabHistory)
-    console.log(tabPointer)
+
     const [isTouch, setIsTouch] = useState(false);
     const [hideButtons, setHideButtons] = useState(false); // Controls visibility of buttons
     const [hideMoreButtons, setHideMoreButtons] = useState(false);
@@ -20,15 +18,19 @@ const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, 
     const themeDropdownInformation = [
         {
             label: "Light (Modern)",
-            onClick: () => console.log("Light (Modern) set") // Clickable item
+            onClick: () => changeTheme("theme-light-modern") // Clickable item
         },
         {
             label: "Dark (Modern)",
-            onClick: () => console.log("Dark (Modern) set") // Another clickable item
+            onClick: () => changeTheme("theme-dark-modern") // Another clickable item
+        },
+        {
+            label: "Dark (Dark+)",
+            onClick: () => changeTheme("theme-dark") // Another clickable item
         },
         {
             label: "Solarized Dark",
-            onClick: () => console.log("Solarized Dark set") // Another clickable item
+            onClick: () => changeTheme("theme-solarized-dark") // Another clickable item
         }
     ];
     const viewDropdownInformation = [
@@ -114,7 +116,7 @@ const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, 
             {!showJustNameBar ? (
                 <div className="relative bg-topBarBackground w-full h-full border-b-[1px] border-borderColor flex justify-between items-center">
                     {/* Left Section with Buttons */}
-                    <div className={`flex flex-row justify-start items-center ml-2 h-full ${hideButtons ? 'overflow-hidden' : ''}`}>
+                    <div className={`flex flex-row justify-start items-center ml-2 h-full ${hideButtons ? '' : ''}`}>
                         <CodeBracketIcon className="w-6 h-6 text-selectedAccent m-2 opacity-0 xs:opacity-100"></CodeBracketIcon>
                         {/* Hide buttons if screen is too small */}
                         {!hideButtons ? (
@@ -138,9 +140,12 @@ const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, 
                                 </div>
                             </>
                         ) : (
-                            <div className="opacity-0 xs:opacity-100">
-                                <TopBarButton name={"View"} clickable={true} isTouch={isTouch} />
-                            </div>
+                            <TopBarButton name={"View"} clickable={true} onClick={() => setShowViewDropdown(prev => !prev)} showVariable={showViewDropdown}>
+                                <Dropdown information={viewDropdownInformation}
+                                    setShowVariable={setShowViewDropdown}
+                                    showVariable={showViewDropdown}>
+                                </Dropdown>
+                            </TopBarButton>
                         )}
                     </div>
 

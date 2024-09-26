@@ -23,7 +23,7 @@ const IconBar = ({ toggleExplorer, isExplorerOpen }) => {
         border-r-[1px] border-borderColor flex-col flex justify-between">
             <Tooltip className={`border-[1px] border-borderColor bg-dropdownBackground ${showExplorerTooltip ? 'opacity-100':'opacity-0'}`} placement="right" content={
                 <>
-                    <Typography className="text-textMain text-sm text-texMain">Toggle Explorer Window</Typography>
+                    <Typography className="text-textMain text-sm">Toggle Explorer Window</Typography>
                 </>}>
                 <div onClick={onExplorerClick} className='flex flex-row cursor-pointer group'>
                     <div className={`h-[4.25rem] w-[2px] ${isExplorerOpen ? 'bg-selectedAccent' : 'bg-iconBarBackground'}`}></div>
@@ -33,7 +33,7 @@ const IconBar = ({ toggleExplorer, isExplorerOpen }) => {
             <div className="flex flex-col">
                 <Tooltip className="border-[1px] border-borderColor bg-dropdownBackground" placement="right" content={
                     <>
-                        <Typography className="text-textMain text-sm text-texMain">Open my Github (new tab)</Typography>
+                        <Typography className="text-textMain text-sm">Open my Github (new tab)</Typography>
                     </>}>
                     <div className="w-auto h-auto m-[0.8rem] flex justify-center items-center cursor-pointer group">
                         <a href="https://www.github.com/jellytumtum" target="_blank" rel="noopener noreferrer">
@@ -45,7 +45,7 @@ const IconBar = ({ toggleExplorer, isExplorerOpen }) => {
                 </Tooltip>
                 <Tooltip className="border-[1px] border-borderColor bg-dropdownBackground" placement="right" content={
                     <>
-                        <Typography className="text-textMain text-sm text-texMain">Open my LinkedIn (new tab)</Typography>
+                        <Typography className="text-textMain text-sm">Open my LinkedIn (new tab)</Typography>
                     </>}>
                     <div className="w-auto h-auto m-[0.8rem] flex justify-center items-center group cursor-pointer">
                         <a href="https://www.linkedin.com/in/cameron-thomas-595417251/" target="_blank" rel="noopener noreferrer">

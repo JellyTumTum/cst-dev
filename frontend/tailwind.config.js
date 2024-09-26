@@ -30,7 +30,10 @@ module.exports = withMT({
                 tabCloseHover: 'var(--tab-close-hover-color)',
                 linkColor: 'var(--link-color)',
                 lineNumberColor: 'var(--line-number-color)',
-                dropdownBackground: 'var(--dropdown-background-color)'
+                dropdownBackground: 'var(--dropdown-background-color)',
+                tunnelColor: 'var(--tunnel-background-color)',
+                tunnelIconColor: 'var(--tunnel-icon-color)',
+                buttonHover: 'var(--button-hover-color)',
                 
             },
             fontFamily: {

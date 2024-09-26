@@ -15,8 +15,8 @@ const Tab = ({ page, selected, position, onTabClose, selectedTab, openTabs, page
             className={`group cursor-pointer h-full px-4 flex flex-row items-center justify-center 
                 ${isFirst ? '' : 'border-l-[1px] border-l-borderColor'}
                 ${isLast ? 'border-r-[1px] border-r-borderColor' : ''}
-                ${selected ? 'border-t-[2px] border-t-selectedAccent bg-tabHover border-b-0' : 'border-b-[1px] border-b-borderColor'} 
-                bg-tabBackground hover:bg-tabHover`}
+                ${selected ? 'border-t-[2px] border-t-selectedAccent bg-mainBackground hover:bg-mainBackground border-b-0' : 'border-b-[1px] border-b-borderColor'} 
+                hover:bg-tabHover`}
         >
             <FileIcon fileName={page.name} className="h-5 w-5 mx-2" />
             <Typography className={`text-md 

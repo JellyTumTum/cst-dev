@@ -33,7 +33,7 @@ const BottomBar = ({ openTab }) => {
 
     return (
         <div className="bg-bottomBarBackground w-full h-full border-t-[1px] border-borderColor hidden xs:flex flex-row justify-start items-center">
-            <div className="flex flex-row bg-selectedAccent h-full w-12 items-center justify-center cursor-not-allowed mr-2">
+            <div className="flex flex-row bg-tunnelColor h-full w-12 items-center justify-center cursor-not-allowed mr-2">
                 <Tooltip className="border-[1px] border-borderColor bg-dropdownBackground" content={
                     <>
                         <Typography className="text-textMain text-sm">Cannot open remote window</Typography>
@@ -45,8 +45,8 @@ const BottomBar = ({ openTab }) => {
                         ref={tunnelRef}
                         onMouseEnter={() => setShowTunnelTooltip(true)}
                         onMouseLeave={() => setShowTunnelTooltip(false)}>
-                        <ChevronRightIcon className="w-5 h-5 text-textMain translate-x-[5px]"></ChevronRightIcon>
-                        <ChevronLeftIcon className="w-5 h-5 text-textMain -translate-x-2 -translate-y-[5px]"></ChevronLeftIcon>
+                        <ChevronRightIcon className="w-5 h-5 text-tunnelIconColor translate-x-[5px] "></ChevronRightIcon>
+                        <ChevronLeftIcon className="w-5 h-5 text-tunnelIconColor -translate-x-2 -translate-y-[5px]"></ChevronLeftIcon>
                     </div>
                 </Tooltip>
             </div>
@@ -71,7 +71,7 @@ const BottomBar = ({ openTab }) => {
 
                 <div className="flex flex-row gap-1 sm:gap-2 h-full items-center">
 
-                    {openTab && 
+                    {openTab &&
                         <>
                             <Tooltip className="border-[1px] border-borderColor bg-dropdownBackground" content={
                                 <>
