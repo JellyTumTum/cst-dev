@@ -84,6 +84,25 @@ const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, 
         return window.matchMedia('(pointer: coarse)').matches;
     }
 
+    const handleResize = () => {
+        if (window.innerWidth < 1100) { // Adjust breakpoint as necessary
+            setHideButtons(true);
+        } else {
+            setHideButtons(false);
+        }
+
+        if (window.innerWidth < 768) { // 768 is md breakpoint too. matches time for welcome page to switch.
+            setHideMoreButtons(true);
+        } else {
+            setHideMoreButtons(false);
+        }
+        if (window.innerWidth < 390) {
+            setShowJustNameBar(true);
+        } else {
+            setShowJustNameBar(false);
+        }
+    };
+
     useEffect(() => {
         setIsTouch(isTouchDevice());
 
@@ -106,10 +125,13 @@ const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, 
                 setShowJustNameBar(false);
             }
         };
+        handleResize();
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    
 
     return (
         <div className="w-full h-full bg-topBarBackground">
@@ -169,7 +191,7 @@ const TopBar = ({ openTabs, setOpenTabs, tabPointer, setTabPointer, tabHistory, 
                             flex justify-center items-center
                             rounded-md">
                             <Typography className="text-textSecondary text-md">
-                                {hideButtons} cst.dev
+                                cst.dev
                             </Typography>
                         </Card>
                     </div>

@@ -8,7 +8,6 @@ import LinedParagraph from "../subComponents/LinedParagraph";
 
 const Lyriclabs = ({ }) => {
 
-    const isDark = localStorage.getItem('theme').includes('dark');
     const motivationParagraph = `Motivation:
     Lyric Labs was developed as the core software component of my undergraduate dissertation. The project aimed to explore memory recognition through song lyrics, in contrast to similar studies that focused on the audio aspect of music. 
     The idea stemmed from personal experiences listening to artists with similar styles, prompting the question, "If I were only given the lyrics, could I identify the artist?" This concept eventually evolved into a dissertation project, earning a first-class distinction with a 74% grade.`

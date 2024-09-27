@@ -2,13 +2,34 @@ import React from "react";
 import { Typography } from "@material-tailwind/react";
 import LogoDisplay from "../subComponents/LogoDisplay";
 import MultiLogoDisplay from "../subComponents/MutliLogoDisplay";
-import LyriclabsSS from '../../screenshots/lyriclabs.png'
 import DemoCard from "../subComponents/DemoCard";
 import LinedParagraph from "../subComponents/LinedParagraph";
+import LightScreenshot from '../../screenshots/website-light.png';
+import DarkModernScreenshot from '../../screenshots/website-dark-modern.png';
+import DarkPlusScreenshot from '../../screenshots/website-dark-plus.png';
+import SolarizedDarkScreenshot from '../../screenshots/website-solarized-dark.png';
 
 const Website = ({ }) => {
 
-    const isDark = localStorage.getItem('theme').includes('dark');
+    let localTheme = localStorage.getItem('theme') || '';
+    if (localTheme == '') {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            localTheme = 'theme-dark-modern';
+        }
+    }
+    let screenshot = LightScreenshot;
+    console.log(localTheme)
+    if (localTheme.includes("dark-modern")) {
+        screenshot = DarkModernScreenshot;
+        console.log("skibidi")
+    } else if (localTheme.includes("solarized-dark")) {
+        screenshot = SolarizedDarkScreenshot;
+        console.log("baby gronk")
+    } else if (localTheme.includes("dark")) {
+        screenshot = DarkPlusScreenshot;
+        console.log("livvy dunne")
+    }
+
     const designParagraph = `Design:
     When I set out to create a website to showcase my projects, no particular design immediately stood out to me. I had some ideas, but none felt quite right. Then, it hit me: I spend so much time working inside an IDE, why not emulate that experience for my own website? It provided a creative yet familiar foundation, and using TailwindCSS, I could focus on refining my frontend skills with the clear goal in mind.
     All credit goes to Microsoft—if I did a good job, it should be apparent that VS Code was my reference. my own text editor / IDE of choice.`
@@ -26,7 +47,7 @@ const Website = ({ }) => {
         <div>
             <div className="flex justify-center mt-2 h-24">
                 <DemoCard
-                    screenshotUrl={LyriclabsSS} // TODO: change to website screenshot nearer to end
+                    screenshotUrl={screenshot}
                     demoUrl=""
                     projectTitle="cst.dev"
                     preText=""

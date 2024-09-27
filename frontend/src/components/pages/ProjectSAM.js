@@ -9,7 +9,13 @@ import LinedParagraph from "../subComponents/LinedParagraph";
 
 const ProjectSAM = ({ }) => {
 
-    const isDark = localStorage.getItem('theme').includes('dark');
+    let localTheme = localStorage.getItem('theme') || '';
+    if (localTheme == '') {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            localTheme = 'theme-dark-modern';
+        }
+    }
+    const isDark = localTheme.includes('dark');
     const motivationParagraph = `Motivation:
     This project was inspired by the "Wikipedia Game," where players navigate between Wikipedia pages using hyperlinks. I wanted to explore whether a similar concept could be applied to Spotify artists—specifically, finding connections between two artists through their collaborations. 
     The idea to graph these connections came from a YouTube video (linked below), which I adapted to create a standalone version for this project.`
