@@ -2,7 +2,7 @@ import React from "react";
 import IconBar from "./subComponents/IconBar";
 import Explorer from "./subComponents/Explorer";
 
-const SideBar = ({ onTabClick, tabPointer, setTabPointer, selectedTab, openTabs, pages, isExplorerOpen, setExplorerOpen }) => {
+const SideBar = ({ onTabClick, tabPointer, setTabPointer, selectedTab, openTabs, pages, isExplorerOpen, setExplorerOpen, smallScreen }) => {
 
     const toggleExplorer = () => {
         setExplorerOpen((prev) => !prev); // Toggles the Explorer open/close state
@@ -14,8 +14,8 @@ const SideBar = ({ onTabClick, tabPointer, setTabPointer, selectedTab, openTabs,
                 <IconBar toggleExplorer={toggleExplorer} isExplorerOpen={isExplorerOpen} />
             </div>
             {isExplorerOpen && (
-                <div className="w-[15.3rem] h-full">
-                    <Explorer onTabClick={onTabClick} tabPointer={tabPointer} setTabPointer={tabPointer} selectedTab={selectedTab} openTabs={openTabs} pages={pages} />
+                <div className={`${smallScreen ? 'w-full':'w-[15.3rem]'} h-full`}>
+                    <Explorer onTabClick={onTabClick} tabPointer={tabPointer} setTabPointer={tabPointer} selectedTab={selectedTab} openTabs={openTabs} pages={pages} smallScreen={smallScreen}/>
                 </div>
             )}
         </div>

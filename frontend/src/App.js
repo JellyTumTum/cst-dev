@@ -45,6 +45,8 @@ function App() {
     const [tabHistory, setTabHistory] = useState([pages[0]]);
     const [tabPointer, setTabPointer] = useState(0);
 
+    const [smallScreen, setSmallScreen] = useState(false);
+
     // This code is also inside onTabClick, not as the function though to avoid passing addTabToHistory around everywhere onTabClick is passed into 
     const addTabToHistory = (page) => {
         // discard new history if not at the front of the list already
@@ -78,8 +80,6 @@ function App() {
         });
     };
 
-
-
     const goForward = () => {
         if (tabPointer < tabHistory.length - 1) {
             setTabPointer((prevPointer) => {
@@ -99,6 +99,25 @@ function App() {
         }
     };
 
+
+
+    const handleResize = () => {
+        if (window.innerWidth < 640) { // Adjust breakpoint as necessary
+            console.log("true")
+            setSmallScreen(true);
+        } else {
+            console.log("false")
+            setSmallScreen(false);
+        }
+    };
+
+    useEffect(() => {
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    
 
     useEffect(() => {
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -122,7 +141,10 @@ function App() {
         const page = pages.find((page) => page.name === tabName);
 
         setOpenTabs((prevTabs) => {
-
+            
+            if (smallScreen) {
+                setExplorerOpen(false);
+            }
             // addTabToHistory(page) --> code is the 8 lines below. 
             const newHistory = tabHistory.slice(0, tabPointer + 1);
             if (newHistory[newHistory.length - 1] !== page) {
@@ -192,7 +214,7 @@ function App() {
 
             {/* Main Content: SideBar and MainWindow */}
             <div className="flex-grow flex overflow-hidden">
-                <div id='sidebar' className={`${isExplorerOpen ? 'w-[19.5rem]' : 'w-[4.25rem'} h-full`}>
+                <div id='sidebar' className={`${isExplorerOpen ? `${smallScreen ? 'w-full' : 'w-[19.5rem]' }` : 'w-[4.25rem'} h-full`}>
                     <SideBar
                         onTabClick={onTabClick}
                         tabPointer={tabPointer}
@@ -202,10 +224,12 @@ function App() {
                         pages={pages}
                         isExplorerOpen={isExplorerOpen}
                         setExplorerOpen={setExplorerOpen}
+                        smallScreen={smallScreen}
                     />
                 </div>
 
-                <div className="flex-grow bg-mainBackground overflow-hidden">
+                <div className={` bg-mainBackground overflow-hidden 
+                    ${isExplorerOpen ? `${smallScreen ? 'hidden w-0' : 'flex flex-grow'}`:`flex flex-grow`}`}>
                     <MainWindow
                         selectedTab={selectedTab}
                         openTabs={openTabs}
