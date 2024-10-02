@@ -44,7 +44,7 @@ const ProjectSAM = ({ }) => {
                 </Typography>
             </div>
             <Typography className="text-textMain text-xl font-bold p-5">Tech Stack</Typography>
-            <div className="flex flex-col md:flex-row justify-evenly gap-2 mx-2">
+            <div className="flex flex-row justify-evenly flex-wrap gap-2">
 
                 <MultiLogoDisplay logoNames={["React", "d3", "Javascript"]} mainText={"React + d3.js + Javascript"} subText={"Frontend"}></MultiLogoDisplay>
                 <MultiLogoDisplay logoNames={["FastAPI", "Python"]} mainText={"FastAPI + Python"} subText={"Backend"}></MultiLogoDisplay>

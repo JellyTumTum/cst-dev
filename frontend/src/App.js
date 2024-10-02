@@ -41,7 +41,7 @@ function App() {
 
     const [selectedTab, setSelectedTab] = useState(pages[0]); 
     const [openTabs, setOpenTabs] = useState([pages[0]]);
-    const [isExplorerOpen, setExplorerOpen] = useState(true);
+    const [isExplorerOpen, setExplorerOpen] = useState(false);
     const [tabHistory, setTabHistory] = useState([pages[0]]);
     const [tabPointer, setTabPointer] = useState(0);
 
@@ -99,8 +99,6 @@ function App() {
         }
     };
 
-
-
     const handleResize = () => {
         if (window.innerWidth < 640) { // Adjust breakpoint as necessary
             setSmallScreen(true);
@@ -114,6 +112,12 @@ function App() {
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => { // added as the other one didnt seem to run on pageload.
+        handleResize();
+        const isSmallScreen = window.innerWidth < 640;
+        setExplorerOpen(isSmallScreen);
     }, []);
     
 
@@ -196,7 +200,7 @@ function App() {
     }, [isExplorerOpen]);
 
     return (
-        <div className='min-h-screen h-full w-full bg-mainBackground flex flex-col'>
+        <div className='min-h-screen h-full w-full bg-mainBackground flex flex-col '>
             {/* TopBar */}
             <div className="h-[2.5rem] min-h-[2.5rem] w-full">
                 <TopBar

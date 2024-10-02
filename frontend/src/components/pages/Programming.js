@@ -18,14 +18,14 @@ To explore examples of the languages and frameworks I have worked with, you can:
 
             </div>
             <Typography className="text-textMain text-xl font-bold p-5">Languages</Typography>
-            <div className="flex flex-row justify-evenly">
+            <div className="flex flex-row justify-evenly flex-wrap gap-y-2">
 
                 <LogoDisplay logoName={"Javascript"} mainText={"Javascript"} subText={"Frontend"}></LogoDisplay>
                 <LogoDisplay logoName={"Java"} mainText={"Java"} subText={"Backend"}></LogoDisplay>
                 <LogoDisplay logoName={"Python"} mainText={"Python"} subText={"Backend"}></LogoDisplay>
             </div>
             <Typography className="text-textMain text-xl font-bold p-5">Frameworks & Systems</Typography>
-            <div className="flex flex-row justify-evenly">
+            <div className="flex flex-row justify-evenly flex-wrap gap-y-2">
 
                 <LogoDisplay logoName={"React"} mainText={"React"} subText={"Frontend"}></LogoDisplay>
                 <LogoDisplay logoName={"Spring"} mainText={"Spring (springboot)"} subText={"Backend"}></LogoDisplay>

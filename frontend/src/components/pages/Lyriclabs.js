@@ -27,7 +27,7 @@ const Lyriclabs = ({ }) => {
                 />
             </div>
             <Typography className="text-textMain text-xl font-bold p-5">Tech Stack</Typography>
-            <div className="flex flex-col md:flex-row justify-evenly gap-2 mx-2">
+            <div className="flex flex-row justify-evenly flex-wrap gap-2">
 
                 <MultiLogoDisplay logoNames={["React", "Javascript"]} mainText={"React + Javascript"} subText={"Frontend"}></MultiLogoDisplay>
                 <MultiLogoDisplay logoNames={["Spring", "Java"]} mainText={"Springboot + Java"} subText={"Backend"}></MultiLogoDisplay>

@@ -53,7 +53,7 @@ const Website = ({ }) => {
             <div className="p-5 justify-between flex-row flex">
                 <Typography className="text-textMain text-xl font-bold">Tech Stack</Typography>
             </div>
-            <div className="flex flex-col md:flex-row justify-evenly mx-2">
+            <div className="flex flex-row justify-evenly flex-wrap gap-2 mx-2">
                 <MultiLogoDisplay logoNames={["React", "tailwind", "material-tailwind", "Javascript"]} mainText={"React + TailwindCSS & Material Tailwind + Javascript"} subText={"Frontend"}></MultiLogoDisplay>
             </div>
             <CodebaseLink link={"https://github.com/JellyTumTum/cst-dev"} className={"mt-4"}></CodebaseLink>
