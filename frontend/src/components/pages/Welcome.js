@@ -31,7 +31,7 @@ const Welcome = ({ openTabs, selectedTab, onLinkClick, tabPointer, setTabPointer
                     <Typography variant="paragraph" className={`text-textSecondary  text-sm md:text-lg text-center ${isExplorerOpen ? 'md:text-left' : 'sm:text-left'} `}>Hi, I'm Cameron! I recently graduated with a BSc in Computer Science from the University of Birmingham and have a strong passion for software development. I'm currently looking for opportunities as a software developer where I can apply my skills and continue growing in the field. Feel free to explore my projects and get in touch!</Typography>
                 </div>
             </div>
-            <div className={`group relative flex justify-center items-center flex-row rounded-xl border-2 bg-explorerMain border-borderColor cursor-pointer shadow-lg group gap-4 p-2 px-2 mt-4`}>
+            <div className={`group relative flex justify-center items-center flex-row rounded-xl border-2 bg-explorerMain border-borderColor cursor-default shadow-lg group gap-4 p-2 px-2 mt-4`}>
                 <h1 className="text-textMain text-lg"> Contact Me: <strong>cameron@cst.dev</strong></h1>
 
             </div>
