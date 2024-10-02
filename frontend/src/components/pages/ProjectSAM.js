@@ -6,6 +6,7 @@ import SAMDark from '../../screenshots/SAM-Dark.png';
 import SAMLight from '../../screenshots/SAM-Light.png';
 import DemoCard from "../subComponents/DemoCard";
 import LinedParagraph from "../subComponents/LinedParagraph";
+import CodebaseLink from "../subComponents/CodebaseLink";
 
 const ProjectSAM = ({ }) => {
 
@@ -38,12 +39,13 @@ const ProjectSAM = ({ }) => {
                 />
             </div>
             <Typography className="text-textMain text-xl font-bold p-5">Tech Stack</Typography>
-            <div className="flex flex-col md:flex-row justify-evenly">
+            <div className="flex flex-col md:flex-row justify-evenly gap-2 mx-2">
 
                 <MultiLogoDisplay logoNames={["React", "d3", "Javascript"]} mainText={"React + d3.js + Javascript"} subText={"Frontend"}></MultiLogoDisplay>
                 <MultiLogoDisplay logoNames={["FastAPI", "Python"]} mainText={"FastAPI + Python"} subText={"Backend"}></MultiLogoDisplay>
                 <MultiLogoDisplay logoNames={["psql", "spotify"]} mainText={"PostgreSQL + Spotify API"} subText={"Data Storage + Retrieval"}></MultiLogoDisplay>
             </div>
+            <CodebaseLink link={"https://github.com/JellyTumTum/sam"} className={"mt-4"}></CodebaseLink>
             <Typography className="text-textMain text-xl font-bold p-5">Documentation</Typography>
 
             <LinedParagraph content={motivationParagraph}></LinedParagraph>

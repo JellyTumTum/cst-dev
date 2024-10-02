@@ -114,16 +114,12 @@ function App() {
 
     const changeTheme = (themeName) => {
         setTheme(themeName);
-        console.log(`set theme to ${themeName}`)
         localStorage.setItem('theme', themeName)
         document.documentElement.className = themeName;
     };
 
     const onTabClick = (tabName) => {
-        console.log(openTabs)
-        console.log(selectedTab)
         const page = pages.find((page) => page.name === tabName);
-        console.log(`page = ${page}`)
 
         setOpenTabs((prevTabs) => {
 
@@ -152,11 +148,8 @@ function App() {
     };
 
     const onTabClose = (pageToClose) => {
-        console.log(pageToClose)
         setOpenTabs((prevTabs) => {
-            console.log(prevTabs)
             const updatedTabs = prevTabs.filter((tab) => tab.name !== pageToClose.name);
-            console.log(updatedTabs)
 
             if (selectedTab?.name === pageToClose.name) {
                 if (updatedTabs.length > 0) {

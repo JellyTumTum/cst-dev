@@ -1,27 +1,31 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { DocumentDuplicateIcon } from '@heroicons/react/24/outline'
+import { DocumentDuplicateIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
 import { Tooltip, Typography } from "@material-tailwind/react";
 
 const IconBar = ({ toggleExplorer, isExplorerOpen }) => {
 
-    const [showExplorerTooltip, setShowExplorerTooltip] = useState(true);   
-    
+    const [showExplorerTooltip, setShowExplorerTooltip] = useState(true);
+
     const onExplorerClick = () => {
         toggleExplorer();
         // Hide the tooltip
         setShowExplorerTooltip(false);
-      
+
         // Set it back to true after 200ms
         setTimeout(() => {
-          setShowExplorerTooltip(true);
+            setShowExplorerTooltip(true);
         }, 200);
-      };
+    };
+
+    const onCVClick = () => {
+        window.open('/cameron-thomas-cv.pdf', '_blank');
+    };
 
     return (
         <div className="h-full w-full bg-sideBarMain
         border-r-[1px] border-borderColor flex-col flex justify-between">
-            <Tooltip className={`border-[1px] border-borderColor bg-dropdownBackground ${showExplorerTooltip ? 'opacity-100':'opacity-0'}`} placement="right" content={
+            <Tooltip className={`border-[1px] border-borderColor bg-dropdownBackground ${showExplorerTooltip ? 'opacity-100' : 'opacity-0'}`} placement="right" content={
                 <>
                     <Typography className="text-textMain text-sm">Toggle Explorer Window</Typography>
                 </>}>
@@ -31,6 +35,14 @@ const IconBar = ({ toggleExplorer, isExplorerOpen }) => {
                 </div>
             </Tooltip>
             <div className="flex flex-col">
+                <Tooltip className="border-[1px] border-borderColor bg-dropdownBackground" placement="right" content={
+                    <>
+                        <Typography className="text-textMain text-sm">View my CV (new tab)</Typography>
+                    </>}>
+                    <div onClick={onCVClick} className='flex flex-row cursor-pointer group'>
+                        <DocumentTextIcon className={`w-[4.25rem] h-[4.25rem] group-hover:text-textMain text-textSecondary p-3`}></DocumentTextIcon>
+                    </div>
+                </Tooltip>
                 <Tooltip className="border-[1px] border-borderColor bg-dropdownBackground" placement="right" content={
                     <>
                         <Typography className="text-textMain text-sm">Open my Github (new tab)</Typography>

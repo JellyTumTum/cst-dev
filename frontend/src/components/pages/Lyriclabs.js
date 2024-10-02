@@ -5,6 +5,7 @@ import MultiLogoDisplay from "../subComponents/MutliLogoDisplay";
 import LyriclabsSS from '../../screenshots/lyriclabs.png'
 import DemoCard from "../subComponents/DemoCard";
 import LinedParagraph from "../subComponents/LinedParagraph";
+import CodebaseLink from "../subComponents/CodebaseLink";
 
 const Lyriclabs = ({ }) => {
 
@@ -26,12 +27,13 @@ const Lyriclabs = ({ }) => {
                 />
             </div>
             <Typography className="text-textMain text-xl font-bold p-5">Tech Stack</Typography>
-            <div className="flex flex-row justify-evenly">
+            <div className="flex flex-col md:flex-row justify-evenly gap-2 mx-2">
 
                 <MultiLogoDisplay logoNames={["React", "Javascript"]} mainText={"React + Javascript"} subText={"Frontend"}></MultiLogoDisplay>
                 <MultiLogoDisplay logoNames={["Spring", "Java"]} mainText={"Springboot + Java"} subText={"Backend"}></MultiLogoDisplay>
                 <MultiLogoDisplay logoNames={["psql", "spotify"]} mainText={"PostgreSQL + Spotify API"} subText={"Data Storage + Retrieval"}></MultiLogoDisplay>
             </div>
+            <CodebaseLink link={"https://github.com/JellyTumTum/lyriclabs"} className={"mt-4"}></CodebaseLink>
             <Typography className="text-textMain text-xl font-bold p-5">Documentation</Typography>
             <LinedParagraph content={motivationParagraph}></LinedParagraph>
             <div className="h-[1rem]"></div>

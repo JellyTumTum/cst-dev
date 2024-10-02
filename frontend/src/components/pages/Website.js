@@ -8,6 +8,7 @@ import LightScreenshot from '../../screenshots/website-light.png';
 import DarkModernScreenshot from '../../screenshots/website-dark-modern.png';
 import DarkPlusScreenshot from '../../screenshots/website-dark-plus.png';
 import SolarizedDarkScreenshot from '../../screenshots/website-solarized-dark.png';
+import CodebaseLink from "../subComponents/CodebaseLink";
 
 const Website = ({ }) => {
 
@@ -18,16 +19,12 @@ const Website = ({ }) => {
         }
     }
     let screenshot = LightScreenshot;
-    console.log(localTheme)
     if (localTheme.includes("dark-modern")) {
         screenshot = DarkModernScreenshot;
-        console.log("skibidi")
     } else if (localTheme.includes("solarized-dark")) {
         screenshot = SolarizedDarkScreenshot;
-        console.log("baby gronk")
     } else if (localTheme.includes("dark")) {
         screenshot = DarkPlusScreenshot;
-        console.log("livvy dunne")
     }
 
     const designParagraph = `Design:
@@ -53,11 +50,13 @@ const Website = ({ }) => {
                     preText=""
                 />
             </div>
-            <Typography className="text-textMain text-xl font-bold p-5">Tech Stack</Typography>
-            <div className="flex flex-col md:flex-row justify-evenly m-4">
-
+            <div className="p-5 justify-between flex-row flex">
+                <Typography className="text-textMain text-xl font-bold">Tech Stack</Typography>
+            </div>
+            <div className="flex flex-col md:flex-row justify-evenly mx-2">
                 <MultiLogoDisplay logoNames={["React", "tailwind", "material-tailwind", "Javascript"]} mainText={"React + TailwindCSS & Material Tailwind + Javascript"} subText={"Frontend"}></MultiLogoDisplay>
             </div>
+            <CodebaseLink link={"https://github.com/JellyTumTum/cst-dev"} className={"mt-4"}></CodebaseLink>
             <Typography className="text-textMain text-xl font-bold p-5">Documentation</Typography>
             <LinedParagraph content={designParagraph}></LinedParagraph>
             <div className="h-[1rem]"></div>

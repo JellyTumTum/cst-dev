@@ -9,7 +9,7 @@ const MultiLogoDisplay = ({ logoNames = [], mainText, subText }) => {
 
             <div
                 className={`w-auto h-auto grid gap-4 p-2 
-                            ${logoNames.length % 2 === 0 && logoNames.length > 2 ? 'grid-cols-2 sm:grid-cols-2 ' : 'grid-cols-1'} 
+                            ${logoNames.length > 1 ? 'grid-cols-2 ' : 'grid-cols-1'} 
                             md:flex md:flex-row justify-center items-center`}
             >
                 {logoNames.map((logoName, index) => {
@@ -19,7 +19,7 @@ const MultiLogoDisplay = ({ logoNames = [], mainText, subText }) => {
                             <img
                                 src={iconUrl}
                                 alt={`${logoName} icon`}
-                                className="w-24 h-24"
+                                className="w-12 h-12 md:w-24 md:h-24"
                             />
                         </div>
                     );
