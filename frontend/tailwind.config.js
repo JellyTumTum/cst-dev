@@ -45,6 +45,7 @@ module.exports = withMT({
                 xs: '300px',
                 sm: '640px',
                 md: '768px',
+                mlg: '900px',
                 xxl: '1260px',
             }
         },

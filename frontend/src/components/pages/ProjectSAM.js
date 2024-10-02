@@ -32,11 +32,16 @@ const ProjectSAM = ({ }) => {
     return (
         <div>
             <div className="flex justify-center mt-2 h-24">
-            <DemoCard
+                <DemoCard
                     screenshotUrl={isDark ? SAMDark : SAMLight}
                     demoUrl="https://cst.dev/sam"
                     projectTitle="Project S.A.M"
                 />
+            </div>
+            <div className="flex justify-center">
+                <Typography className="text-red-300 w-11/12 flex mlg:hidden mt-2 text-center">
+                    Your device has been detected as under the useable threshold for this project, While you can still visit it, it will not be useable. The project was not designed for use on small screens when developed and has not yet been adjusted for it
+                </Typography>
             </div>
             <Typography className="text-textMain text-xl font-bold p-5">Tech Stack</Typography>
             <div className="flex flex-col md:flex-row justify-evenly gap-2 mx-2">
