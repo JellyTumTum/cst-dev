@@ -103,10 +103,8 @@ function App() {
 
     const handleResize = () => {
         if (window.innerWidth < 640) { // Adjust breakpoint as necessary
-            console.log("true")
             setSmallScreen(true);
         } else {
-            console.log("false")
             setSmallScreen(false);
         }
     };
