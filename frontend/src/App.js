@@ -117,7 +117,6 @@ function App() {
     useEffect(() => { // added as the other one didnt seem to run on pageload.
         handleResize();
         const isSmallScreen = window.innerWidth < 640 || window.outerWidth < 640
-        console.log(isSmallScreen)
         setExplorerOpen(!isSmallScreen);
     }, []);
     
